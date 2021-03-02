@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'classes',
+    'notes',
 
     'bootstrap4',
 
