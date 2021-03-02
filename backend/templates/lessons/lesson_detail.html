@@ -14,6 +14,10 @@
                 <div class="u-container-layout u-valign-middle u-container-layout-1">
 
                     <h2 class="u-blog-control u-text u-text-1">{{ lesson.title }}</h2>
+                    <h6 style="margin: 1% 0;">
+                        <a href="{% url 'user profile' lesson.teacher.id %}"
+                           class="btn btn-secondary">{{ lesson.teacher.first_name }} {{ lesson.teacher.last_name }}</a>
+                    </h6>
                     <img alt="Not Found"
                          class="u-blog-control u-expanded-width u-image u-image-default u-image-1"
                          src="{{ lesson.image.url }}"

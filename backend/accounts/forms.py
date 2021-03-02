@@ -12,7 +12,7 @@ class StudentSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
-
+    school = forms.CharField(max_length=100)
     grade_choices = (
         ('8', 'Осми клас'),
         ('9', 'Девети клас'),
@@ -56,6 +56,7 @@ class TeacherSignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
+    school = forms.CharField(max_length=100)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

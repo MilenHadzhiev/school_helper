@@ -17,5 +17,7 @@ class TeacherSignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        user.school = form.cleaned_data.get('school')
+        user.save()
         login(self.request, user)
         return redirect('homepage')
