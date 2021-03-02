@@ -1,7 +1,12 @@
 {% extends 'common/base.html' %}
+{% load static %}
 {% load bootstrap4 %}
 {% block site_title %}
     Промени {{ note.title }}
+{% endblock %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
 {% endblock %}
 {% block site_content %}
     <div class="container-fluid">
