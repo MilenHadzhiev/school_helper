@@ -57,7 +57,7 @@ class LessonsList(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['lessons'] = self.get_queryset()
-        context['is_user_tutorials_page'] = False
+        context['is_user_lessons_page'] = False
         return context
 
 
@@ -82,7 +82,7 @@ class LessonEdit(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk']
-        context['tutorial'] = Lesson.objects.get(pk=pk)
+        context['lesson'] = Lesson.objects.get(pk=pk)
         return context
 
     def form_valid(self, form):

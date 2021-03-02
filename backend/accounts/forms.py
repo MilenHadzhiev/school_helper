@@ -57,6 +57,15 @@ class TeacherSignUpForm(UserCreationForm):
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        try:
+            match = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return email
+
+        raise forms.ValidationError('This email is already taken')
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.first_name = self.cleaned_data['first_name']
@@ -66,3 +75,14 @@ class TeacherSignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class ProfileEditForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['profile_picture'].required = False
+        self.fields['school'].required = False
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'school', 'profile_picture')
