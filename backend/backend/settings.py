@@ -125,7 +125,7 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
-STATIC_ROOT = ''
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
