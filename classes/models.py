@@ -1,6 +1,7 @@
 from django.db import models
 
 from accounts.models import Subject, User
+from cloudinary import models as cloudinary_models
 
 
 class Lesson(models.Model):
@@ -11,11 +12,12 @@ class Lesson(models.Model):
         User,
         on_delete=models.CASCADE,
     )
-    image = models.ImageField(
-        upload_to='lesson_pics/',
-        blank=True,
-        default='',
-    )
+    # image = models.ImageField(
+    #     upload_to='lesson_pics/',
+    #     blank=True,
+    #     default='',
+    # )
+    image = cloudinary_models.CloudinaryField('image')
 
     def __str__(self):
         return self.title

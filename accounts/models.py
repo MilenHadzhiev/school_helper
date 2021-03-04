@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from cloudinary import models as cloudinary_models
 
 class Subject(models.Model):
     another = 'друг'
@@ -31,11 +32,13 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     # date_of_birth = models.DateField(blank=True, default='0000-00-00')
 
-    profile_picture = models.ImageField(
-        upload_to='profile_pics/',
-        blank=True,
-        default='',
-    )
+    # profile_picture = models.ImageField(
+    #     upload_to='profile_pics/',
+    #     blank=True,
+    #     default='',
+    # )
+
+    profile_picture = cloudinary_models.CloudinaryField('image')
 
     def __str__(self):
         return self.username
