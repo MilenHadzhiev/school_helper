@@ -84,6 +84,15 @@
                                   u-text-hover-palette-2-base"
                        style="padding: 10px 20px;">Решени тестове</a>
                 </li>
+                {% if user.is_teacher %}
+                <li class="u-nav-item">
+                    <a href="{% url 'admin' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Администрация</a>
+                </li>
+                {% endif %}
             {% endif %}
 
             {% if user.is_authenticated %}

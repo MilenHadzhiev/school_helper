@@ -91,17 +91,19 @@ def exam_save_view(request, pk):
         score_ = score * multiplier
         result = Result.objects.create(exam=exam, user=user, score=score_)
 
-        x = 5
         if score_ >= exam.required_score_to_pass:
             url = 'http://' + request.get_host()
             redirect_url = join(url, 'exams', 'results', str(result.id))
-            x = 44
             return JsonResponse(
                 {'passed': True,
                  'score': score_,
                  'results': results,
                  'redirect_url': redirect_url})
         else:
-            print(request.get_host())
-            x = 5
-            return JsonResponse({'passed': False, 'score': score_, 'results': results})
+            url = 'http://' + request.get_host()
+            redirect_url = join(url, 'exams', 'results', str(result.id))
+            return JsonResponse(
+                {'passed': True,
+                 'score': score_,
+                 'results': results,
+                 'redirect_url': redirect_url})

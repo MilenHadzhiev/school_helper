@@ -6,7 +6,7 @@ from exams.models import Exam
 
 class Question(models.Model):
     text = models.CharField(max_length=200)
-    quiz = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
