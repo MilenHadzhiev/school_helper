@@ -10,6 +10,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('lessons/', include('classes.urls')),
     path('notes/', include('notes.urls')),
+    path('exams/', include('exams.urls', namespace='exams')),
     # path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     # path('api/', include('classes.api.urls')),

@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block site_scripts %}
+    <script src="{% static 'exams/exam.js' %}" defer></script>
+{% endblock %}
+
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+
+{% block site_title %}
+    {{ exam.name }}
+{% endblock %}
+
+{% block site_content %}
+    <h1 class="text-center">{{ exam.name }}</h1>
+    <hr>
+    <div class="container-fluid" style="background-image: none">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form id="exam-form"
+                      class="mt-3 mb-3"
+                      style="border: 1px solid grey; margin: 10% 0; padding: 10% 5%">
+                    {% csrf_token %}
+                    <div id="exam-box"></div>
+                    <button type="submit" id="submitBtn" class="btn btn-block btn-dark">Изпращане</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{#    <script>#}
+{#    document.getElementById('submitBtn').onclick().className += 'not-visible'#}
+{#    </script>#}
+{% endblock %}

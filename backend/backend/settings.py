@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     'accounts',
     'classes',
     'notes',
+    'exams',
+    'questions',
+    'results',
 
     'bootstrap4',
 

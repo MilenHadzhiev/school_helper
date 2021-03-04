@@ -1,0 +1,24 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_title %}
+    {{ exam_result }}
+{% endblock %}
+{% block site_content %}
+    <h1 class="text-center">{{ exam_result.exam.name }}</h1>
+    <hr>
+    <div class="container-fluid" style="background-image: none">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <h3 class="text-center">{{ exam_result.user.first_name }} {{ exam_result.user.last_name }}</h3>
+                <h5 class="text-center">Резултат: {{ exam_result.score }}%</h5>
+                <h5 class="text-center">Оценка: {{ grade }}</h5>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+{% endblock %}
