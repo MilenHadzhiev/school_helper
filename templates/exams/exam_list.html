@@ -1,0 +1,69 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block site_scripts %}
+    <script src="{% static 'exams/main.js' %}" defer></script>
+{% endblock %}
+
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_title %}
+    Всички тестове
+{% endblock %}
+{% block site_content %}
+
+    <div class="modal fade" id="examStart" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Започни теста?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body-confirm">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Не, върни се обратно</button>
+                    <button type="button" id="start-button" class="btn btn-success">Да, започвам</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 class="text-center">Тестове</h3>
+    <div class="row">
+        {% for exam in object_list %}
+            <div class="col-lg-4" style="margin-top: 15px">
+                <div class="card" style="width: 18rem;background: rgba(204, 204, 204, 0);border: none">
+                    <div class="card-body">
+                        <h3 class="text-center">{{ exam.name }}</h3>
+                        <h5 class="text-center">{{ exam.teacher }}</h5>
+                        <div class="text-center">
+                            <button class="btn btn-primary modal-button"
+                                    data-pk="{{ exam.id }}"
+                                    data-exam="{{ exam.name }}"
+                                    data-subject="{{ exam.subject }}"
+                                    data-teacher="{{ exam.teacher }}"
+                                    data-three="{{ exam.required_score_to_pass }}"
+                                    data-four="{{ exam.required_score_four }}"
+                                    data-five="{{ exam.required_score_five }}"
+                                    data-six="{{ exam.required_score_six }}"
+                                    data-toggle="modal"
+                                    data-target="#examStart">
+                                Започни
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

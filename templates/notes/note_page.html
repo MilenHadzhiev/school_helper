@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_title %}
+    {{ note.title }}
+{% endblock %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_content %}
+    <div class="container">
+        <div class="text-center" style="margin-top: 30px;">
+            <h1>{{ note.title }}</h1>
+            <p class="mt2" style="text-align: center;font-size: 20px;">{{ note.description|linebreaksbr|urlize }}</p>
+        </div>
+        <div class="text-center">
+            <a href="{% url 'edit note' note.id %}" class="btn btn-info">Промени бележка</a>
+            <a href="{% url 'delete note' note.id %}" class="btn btn-danger">Изтрий бележка</a>
+        </div>
+    </div>
+{% endblock %}

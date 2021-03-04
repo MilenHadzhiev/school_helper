@@ -1,0 +1,102 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block site_content %}
+
+    <section class="u-clearfix u-palette-1-dark-2 u-section-1" id="carousel_2f63">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-valign-middle-xs u-sheet-1">
+            <div class="u-expanded-height u-palette-3-base u-shape u-shape-rectangle u-shape-1"></div>
+            <img alt=""
+                 class="u-expanded-width-sm u-expanded-width-xs u-image u-image-1"
+                 src="{% static 'images/5t5-min.jpg' %}">
+            <div class="u-align-left u-container-style u-group u-overlap-transparent u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h2 class="u-text u-text-1">Приятно учене за учители и ученици &#127774;</h2>
+                    <p class="u-text u-text-grey-30 u-text-2">Source Code:
+                        <a href="https://github.com/MilenHadzhiev/school_helper"
+                           class="u-active-none u-border-1
+                                  u-border-grey-75 u-btn
+                                  u-button-link u-button-style
+                                  u-hover-none u-none
+                                  u-text-grey-50 u-btn-1">School Helper Github</a></p>
+                </div>
+            </div>
+
+            <div class="u-list u-repeater u-list-1">
+                {% if not user.is_authenticated %}
+                <div class="u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-1">
+                    <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                        <h4 class="u-align-center u-text u-text-palette-4-base u-text-3">За учители:</h4>
+
+                        <div style="margin-top: 10%">
+                            <p class="u-align-center u-text u-text-4">
+                                <a href="{% url 'login' %}"
+                                   class="u-active-none u-border-grey-75
+                                          u-btn u-button-link u-button-style
+                                          u-hover-none u-none
+                                          u-text-grey-50 u-btn-1">Вход
+                                </a>
+                            </p>
+                        </div>
+                        <div style="margin-top: 10%">
+                            <p class="u-align-center u-text u-text-4">
+                                <a href="{% url 'teacher_signup' %}"
+                                   class="u-active-none u-border-grey-75
+                                          u-btn u-button-link u-button-style
+                                          u-hover-none u-none
+                                          u-text-grey-50 u-btn-1">Регистрирай се
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="u-align-center u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-2">
+                    <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                        <h4 class="u-align-center u-text u-text-palette-4-base u-text-5">За ученици:</h4>
+
+                        <div style="margin-top: 10%">
+                            <p class="u-align-center u-text u-text-4">
+                                <a href="{% url 'login' %}"
+                                   class="u-active-none u-border-grey-75
+                                          u-btn u-button-link u-button-style
+                                          u-hover-none u-none
+                                          u-text-grey-50 u-btn-1">Вход
+                                </a>
+                            </p>
+                        </div>
+                        <div style="margin-top: 10%">
+                            <p class="u-align-center u-text u-text-4">
+                                <a href="{% url 'student_signup' %}"
+                                   class="u-active-none u-border-grey-75
+                                          u-btn u-button-link u-button-style
+                                          u-hover-none u-none
+                                          u-text-grey-50 u-btn-1">Регистрирай се
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="u-align-center u-container-style u-list-item u-repeater-item u-video-cover u-white u-list-item-2">
+                    <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                        <h4 class="u-align-center u-text u-text-palette-4-base u-text-5">Уроци:</h4>
+                        <div style="margin-top: 10%">
+                            <p class="u-align-center u-text u-text-4">
+                                <a href="{% url 'lessons list' %}"
+                                   class="u-active-none u-border-grey-75
+                                          u-btn u-button-link u-button-style
+                                          u-hover-none u-none
+                                          u-text-grey-50 u-btn-1">Прегледай
+                                        &#127859;&#127859;&#127859;
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {% include 'partials/footer.html' %}
+{% endblock %}

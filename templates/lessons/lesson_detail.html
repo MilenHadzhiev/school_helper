@@ -1,0 +1,43 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+
+{% block site_content %}
+    <section class="u-align-center u-clearfix u-section-1" id="sec-6dbb">
+        <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+            <div class="u-container-style u-expanded-width u-post-details u-post-details-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+
+                    <h2 class="u-blog-control u-text u-text-1">{{ lesson.title }}</h2>
+                    <h6 style="margin: 1% 0;">
+                        <a href="{% url 'user profile' lesson.teacher.id %}"
+                           class="btn btn-secondary">{{ lesson.teacher.first_name }} {{ lesson.teacher.last_name }}
+                        </a>
+                        <a href="{% url 'create note for lesson' lesson.id %}"
+                           class="btn btn-dark">
+                            Добави към бележник
+                        </a>
+                    </h6>
+                    <img alt="Not Found"
+                         class="u-blog-control u-expanded-width u-image u-image-default u-image-1"
+                         src="{{ lesson.image.url }}"
+                         id="img">
+                    {% if can_change %}
+                        <div class="text-center" style="margin-top: 1%;">
+                            <a href="{% url 'edit lesson' lesson.id %}" class="btn btn-info">Обнови</a>
+                            <a href="{% url 'delete lesson' lesson.id %}" class="btn btn-danger">Изтрий</a>
+                        </div>
+                    {% endif %}
+                    <div class="u-align-justify u-blog-control u-post-content u-text u-text-2 fr-view">
+                        <p>{{ lesson.content|linebreaksbr|urlize }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

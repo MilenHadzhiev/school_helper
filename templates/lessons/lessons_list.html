@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Blog-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+
+{% block site_content %}
+    <section class="u-clearfix u-section-1" id="sec-4057">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <div class="u-blog u-expanded-width u-repeater u-repeater-1">
+                {% for lesson in lessons %}
+                    <div class="u-blog-post u-container-style u-repeater-item u-cyan u-repeater-item-1">
+                        <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+
+                            <h4 class="u-blog-control u-text u-text-1">
+                                <a class="u-post-header-link"
+                                   href="{% url 'lesson detail' lesson.id %}">{{ lesson.title }}</a></h4>
+                            <a class="u-post-header-link" href="{% url 'lesson detail' lesson.id %}">
+                                <img alt=""
+                                     class="u-blog-control u-expanded-width u-image u-image-default u-image-1"
+                                     src="{{ lesson.image.url }}">
+                            </a>
+
+                            <div class="u-blog-control u-post-content u-text u-text">
+                                <p>{{ lesson.content|truncatechars:100 }}</p>
+                            </div>
+                            <a href="{% url 'lesson detail' lesson.id %}"
+                               class="u-blog-control
+                                      u-border-2
+                                      u-border-palette-1-base
+                                      u-btn u-btn-rectangle
+                                      u-button-style
+                                      u-none u-btn-1">Read More</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

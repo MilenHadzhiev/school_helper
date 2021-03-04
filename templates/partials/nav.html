@@ -1,0 +1,98 @@
+<nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+    <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+        <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+           href="#">
+            <svg>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
+                        <rect y="1" width="16" height="2"></rect>
+                        <rect y="7" width="16" height="2"></rect>
+                        <rect y="13" width="16" height="2"></rect>
+                    </symbol>
+                </defs>
+            </svg>
+        </a>
+    </div>
+    <div class="u-nav-container">
+        <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item">
+                <a class="u-button-style u-nav-link
+                           u-text-active-palette-1-base
+                           u-text-hover-palette-2-base"
+                   href="{% url 'homepage' %}"
+                   style="padding: 10px 20px;">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="u-nav-item">
+                    <a href="{% url 'current profile' %}"
+                       class="u-button-style u-nav-link
+                          u-text-active-palette-1-base
+                          u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Моят профил {{ user.username }}</a>
+                </li>
+                {% if user.is_teacher %}
+                    <li class="u-nav-item">
+                        <a href="{% url 'create lesson' %}"
+                           class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                           style="padding: 10px 20px;">Създай урок</a>
+                    </li>
+                    <li class="u-nav-item">
+                        <a href="{% url 'current user lessons' %}"
+                           class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                           style="padding: 10px 20px;">Моите уроци</a>
+                    </li>
+                    <li class="u-nav-item">
+                        <a href="{% url 'lessons list' %}"
+                           class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                           style="padding: 10px 20px;">Всички уроци</a>
+                    </li>
+                {% endif %}
+                <li class="u-nav-item">
+                    <a href="{% url 'create note' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Създай бележка</a>
+                </li>
+                <li class="u-nav-item">
+                    <a href="{% url 'my notes' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Бележник</a>
+                </li>
+                <li class="u-nav-item">
+                    <a href="{% url 'exams:exams list' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Тестове</a>
+                </li>
+                <li class="u-nav-item">
+                    <a href="{% url 'exams:user exam results' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Решени тестове</a>
+                </li>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <li class="u-nav-item"><a
+                        class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                        href="{% url 'logout' %}"
+                        style="padding: 10px 20px;">Изход</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

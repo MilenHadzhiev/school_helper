@@ -1,0 +1,29 @@
+{% extends 'common/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block site_title %}
+    Създай бележка
+{% endblock %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_content %}
+    <div class="container-fluid" style="background-image: none">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form method="post" action="{% url 'create note' %}"
+                      style="border: 1px solid grey; margin: 10% 0; padding: 10% 5%">
+                    {% csrf_token %}
+                    <h1>Създай нова бележка</h1>
+                    {% for field in form %}
+                        {% bootstrap_field field %}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-block btn-dark">Създай бележка</button>
+                </form>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+{% endblock %}

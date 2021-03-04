@@ -1,0 +1,12 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_title %}
+    Бележник
+{% endblock %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_content %}
+    {% include 'partials/display_notes.html' %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_content %}
+    <div class="container" style="margin-top: 5%">
+        <div class="row">
+            <div class="col-md-6 img">
+                <img src="
+                    {% if current_user.profile_picture %}
+                        {{ current_user.profile_picture.url }}
+                    {% else %}
+                        {% static 'images/user.jpg' %}
+                    {% endif %}"
+                     alt="Профилната снимка е повредена или липсва"
+                     class="img-rounded" style="width: 70%">
+            </div>
+            <div class="col-md-6 details">
+                <blockquote>
+                    <h1>{% if current_user.first_name %}
+                        {{ current_user.first_name }} {{ current_user.last_name }}
+                    {% else %}
+                        {{ current_user.username }}
+                    {% endif %}
+                    </h1>
+                    <h3>{% if user.is_teacher %}
+                        Учител
+                    {% else %}
+                        Ученик
+                    {% endif %}</h3>
+                    <h5>Имейл:
+                        {% if current_user.email %}
+                            {{ current_user.email }}
+                        {% else %}
+                            -
+                        {% endif %} <br>
+                    </h5>
+                    <h5>Училище:
+                        {% if current_user.school %}
+                            {{ current_user.school }}
+                        {% else %}
+                            -
+                        {% endif %} <br>
+                    </h5>
+                    <h3 style="font-size: 18px"><cite title="Source Title">
+                        {{ current_user.grade }}<i
+                            class="icon-map-marker"></i></cite></h3>
+
+                </blockquote>
+                {% if has_edit_link %}
+                    <button type="button" class="btn btn-light">
+                        <a href="{% url 'edit profile' %}">Променете своята информация</a>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if is_teacher %}
+        <div class="container" style="width: 50%; padding: 0; float: left;">
+        {% if lessons %}
+            <h3 class="text-center">Уроци на {{ current_user.username }}</h3>
+            {% include 'partials/display_lessons.html' %}
+        {% else %}
+            <p>Учителят не е качил никакви уроци</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

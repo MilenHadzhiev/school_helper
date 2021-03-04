@@ -1,0 +1,17 @@
+<div class="row">
+    {% for lesson in lessons %}
+        <div class="col-lg-4" style="margin-top: 15px;">
+            <div class="card" style="width: 18rem;background: rgba(204, 204, 204, 0);border: none">
+                <h4 class="text-center">{{ lesson.title }}</h4>
+                <div class="card-body">
+                    <div class="text-center">
+                        <a href="{% url 'lesson detail' lesson.id %}"
+                           class="btn btn-primary stretched-link">
+                            See details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
