@@ -1,0 +1,1 @@
+# school_helper_just_django
