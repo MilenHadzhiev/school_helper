@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.models import Group
 from django.shortcuts import redirect
 from django.views.generic import CreateView
 
@@ -19,5 +20,7 @@ class TeacherSignUpView(CreateView):
         user = form.save()
         user.school = form.cleaned_data.get('school')
         user.save()
+        teachers_group = Group.objects.get(name='Teachers')
+        teachers_group.user_set.add(user)
         login(self.request, user)
         return redirect('homepage')

@@ -70,6 +70,20 @@
                                   u-text-hover-palette-2-base"
                        style="padding: 10px 20px;">Бележник</a>
                 </li>
+                <li class="u-nav-item">
+                    <a href="{% url 'exams:exams list' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Тестове</a>
+                </li>
+                <li class="u-nav-item">
+                    <a href="{% url 'exams:user exam results' %}"
+                       class="u-button-style u-nav-link
+                                  u-text-active-palette-1-base
+                                  u-text-hover-palette-2-base"
+                       style="padding: 10px 20px;">Решени тестове</a>
+                </li>
             {% endif %}
 
             {% if user.is_authenticated %}

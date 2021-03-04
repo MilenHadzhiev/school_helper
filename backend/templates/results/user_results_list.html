@@ -1,0 +1,37 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/Post-Template.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/lessons-bg.css' %}" media="screen">
+{% endblock %}
+{% block site_title %}
+    Моите решени тестове
+
+{% endblock %}
+
+{% block site_content %}
+    {% if results %}
+        <h3 class="text-center">Моите решени тестове</h3>
+        <div class="row">
+            {% for result in results %}
+                <div class="col-lg-4" style="margin-top: 15px">
+                    <div class="card" style="width: 18rem;background: rgba(204, 204, 204, 0);border: none">
+                        <div class="card-body">
+                            <h3 class="text-center">{{ result.exam }}</h3>
+                            <div class="text-center">
+                                <a href="{% url 'exams:exam result' result.id %}" class="btn btn-primary stretched-link">
+                                    Виж подробности
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="mt-5 text-center">
+            <h1>Няма решени тестове</h1>
+            <a href="{% url 'exams:exams list' %}" class="btn btn-success">Реши тест</a>
+        </div>
+    {% endif %}
+{% endblock %}

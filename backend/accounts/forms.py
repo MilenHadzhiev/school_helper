@@ -73,6 +73,8 @@ class TeacherSignUpForm(UserCreationForm):
         user.last_name = self.cleaned_data['last_name']
         user.email = self.cleaned_data['email']
         user.is_teacher = True
+        user.is_staff = True
+
         if commit:
             user.save()
         return user
