@@ -3,7 +3,7 @@ from os.path import join
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from exams.models import Exam
 from questions.models import Question
@@ -17,6 +17,11 @@ class ExamCreate(CreateView):
 class ExamList(ListView):
     model = Exam
     template_name = 'exams/exam_list.html'
+
+
+# class ExamView(DetailView):
+#     model = Exam
+#     template_name = 'exams/exam.html'
 
 
 def exam_view(request, pk):
@@ -61,7 +66,7 @@ def exam_save_view(request, pk):
         for (q, a) in data_.items():  # iterating through the question-answer pairs
             if a[0] != '':  # a is a list of answers containing one string
                 question = Question.objects.get(text=q)
-                question_answers = question.get_answers()   # getting all answers tied to this question object
+                question_answers = question.get_answers()  # getting all answers tied to this question object
                 for answer in question_answers:
                     if a[0] == answer.text:  # checking if the answer selected by the user is the correct one
                         if answer.correct_answer:  # a[0] is the answer selected by the user

@@ -38,7 +38,7 @@ class User(AbstractUser):
     #     default='',
     # )
 
-    profile_picture = cloudinary_models.CloudinaryField('image')
+    profile_picture = cloudinary_models.CloudinaryField('image', blank=True)
 
     def __str__(self):
         return self.username
