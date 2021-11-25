@@ -12,5 +12,5 @@ You can register as a student or a teacher. Teachers have staff status and CRUD 
 
 Еxams are created by superuser only at the moment
 
-**TO DO
+** TO DO
 Finish exam app
