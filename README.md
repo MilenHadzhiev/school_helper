@@ -16,3 +16,4 @@ You can register as a student or a teacher. Teachers have staff status and CRUD 
 Finish exam app <br>
 Add live streaming feature <br>
 Add recording livestreams feature <br>
+Add feature - during exams students can't change the tab
