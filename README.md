@@ -14,3 +14,5 @@ You can register as a student or a teacher. Teachers have staff status and CRUD 
 
 ** TO DO
 Finish exam app
+Add live streaming feature
+Add recording livestreams feature
