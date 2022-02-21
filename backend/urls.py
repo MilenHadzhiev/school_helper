@@ -12,6 +12,6 @@ urlpatterns = [
     path('notes/', include('notes.urls')),
     path('exams/', include('exams.urls', namespace='exams')),
     # path('api-auth/', include('rest_framework.urls')),
-    path('admin/', admin.site.urls),
+    path('school-app-administration/', admin.site.urls),
     # path('api/', include('classes.api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
