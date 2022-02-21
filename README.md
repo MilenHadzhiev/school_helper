@@ -13,6 +13,6 @@ You can register as a student or a teacher. Teachers have staff status and CRUD 
 Еxams are created by superuser only at the moment
 
 ** TO DO
-Finish exam app
-Add live streaming feature
-Add recording livestreams feature
+Finish exam app <br>
+Add live streaming feature <br>
+Add recording livestreams feature <br>
