@@ -2,16 +2,16 @@
 
 ## Django application
 
-Example user credentials:
-student account
-username: ASDasdd
-password: YdfErSVSrrF29Hf
+Example user credentials: <br>
+student account <br>
+username: ASDasdd <br>
+password: YdfErSVSrrF29Hf <br>
+ <br>
+teacher account: <br>
+username: test_teacher1 <br>
+password: BUv49Kskgg6sr94 <br>
 
-teacher account:
-username: test_teacher1
-password: BUv49Kskgg6sr94
-
-Online education platform
+Online education platform <br>
 
 You can register as a student or a teacher. Teachers have staff status and CRUD permissions for Lesson, Exam, Question and Answer models. To add an exam, questions and answers teachers have to do so through the admin panel. Each user can create Notes, where they can write down whatever they wish.
 
